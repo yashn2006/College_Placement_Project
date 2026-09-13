@@ -1,0 +1,12 @@
+<div class="container" style="padding: 2rem 0;">
+    <h1>All Open Jobs</h1>
+    {{#if companyName}}<h3>Filtered by: {{companyName}}</h3>{{/if}}
+    
+    <div class="grid">
+        {{#each jobs}}
+            {{> jobCard this}}
+        {{else}}
+            <p>No jobs found.</p>
+        {{/each}}
+    </div>
+</div>

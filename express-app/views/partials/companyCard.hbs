@@ -1,0 +1,10 @@
+<div class="card">
+    {{#if this.logo_url}}
+        <img src="{{this.logo_url}}" alt="{{this.name}}" style="width: 48px; height: 48px; border-radius: 8px; margin-bottom: 1rem;">
+    {{/if}}
+    <h3>{{this.name}}</h3>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">{{this.description}}</p>
+    <div class="mt-4">
+        <a href="/company/{{this.id}}" class="btn btn-secondary" style="width: 100%;">View Openings</a>
+    </div>
+</div>

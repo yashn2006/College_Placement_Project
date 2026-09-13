@@ -1,0 +1,12 @@
+<div class="container" style="padding: 2rem 0;">
+    <div class="flex justify-between items-center mb-4">
+        <h1>All Companies</h1>
+    </div>
+    <div class="grid">
+        {{#each companies}}
+            {{> companyCard this}}
+        {{else}}
+            <p>No companies found.</p>
+        {{/each}}
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container" style="padding: 2rem 0;">
+    <h1>Registered Students</h1>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+        <thead>
+            <tr>
+                <th style="padding: 1rem; border-bottom: 2px solid var(--border);">Name</th>
+                <th style="padding: 1rem; border-bottom: 2px solid var(--border);">Roll No</th>
+                <th style="padding: 1rem; border-bottom: 2px solid var(--border);">Branch</th>
+                <th style="padding: 1rem; border-bottom: 2px solid var(--border);">CGPA</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each students}}
+                <tr>
+                    <td style="padding: 1rem; border-bottom: 1px solid var(--border);">
+                        <a href="/student/{{this.id}}">{{this.users.name}}</a>
+                    </td>
+                    <td style="padding: 1rem; border-bottom: 1px solid var(--border);">{{this.roll_no}}</td>
+                    <td style="padding: 1rem; border-bottom: 1px solid var(--border);">{{this.branch}}</td>
+                    <td style="padding: 1rem; border-bottom: 1px solid var(--border);">{{this.cgpa}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

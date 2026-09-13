@@ -1,0 +1,106 @@
+<div class="dashboard-container">
+    {{> sidebar activePage='head'}}
+    <div class="main-content">
+        <h1>Head Dashboard</h1>
+        
+        <!-- Job Posting Form -->
+        <div class="card">
+            <h3>Post New Job</h3>
+            <form action="/job" method="POST">
+                <div class="form-group">
+                    <label>Company</label>
+                    <select name="company_id" class="form-control" required>
+                        {{#each companies}}
+                            <option value="{{this.id}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <select name="type" class="form-control" required>
+                        <option value="job">Job</option>
+                        <option value="internship">Internship</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>CTC/Stipend</label>
+                    <input type="text" name="ctc_or_stipend" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Eligibility</label>
+                    <input type="text" name="eligibility" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Deadline</label>
+                    <input type="date" name="deadline" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Post Job</button>
+            </form>
+        </div>
+
+        <!-- Add Company Form -->
+        <div class="card">
+            <h3>Add New Company</h3>
+            <form action="/company" method="POST">
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Website</label>
+                    <input type="url" name="website" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Logo URL</label>
+                    <input type="url" name="logo_url" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Company</button>
+            </form>
+        </div>
+
+        <h2>All Applications</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Job</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each applications}}
+                    <tr>
+                        <td>{{this.users.name}}</td>
+                        <td>{{this.jobs.title}}</td>
+                        <td>{{{statusBadge this.status}}}</td>
+                        <td>
+                            {{#eq this.status 'pending'}}
+                                <form action="/application/{{this.id}}/decide" method="POST" style="display: inline;">
+                                    <input type="hidden" name="status" value="approved">
+                                    <button type="submit" class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Approve</button>
+                                </form>
+                                <form action="/application/{{this.id}}/decide" method="POST" style="display: inline;">
+                                    <input type="hidden" name="status" value="rejected">
+                                    <button type="submit" class="btn btn-red" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Reject</button>
+                                </form>
+                            {{/eq}}
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

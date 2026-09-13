@@ -1,0 +1,23 @@
+<div class="sidebar">
+    <div style="margin-bottom: 2rem;">
+        <h4 style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Navigation</h4>
+        
+        {{#eq user.role 'head'}}
+            <a href="/dashboard/head" class="sidebar-link {{#eq activePage 'head'}}active{{/eq}}">Head Dashboard</a>
+            <a href="/companies" class="sidebar-link">All Companies</a>
+            <a href="/jobs" class="sidebar-link">All Jobs</a>
+            <a href="/students" class="sidebar-link">Student List</a>
+        {{/eq}}
+
+        {{#eq user.role 'volunteer'}}
+            <a href="/dashboard/volunteer" class="sidebar-link {{#eq activePage 'volunteer'}}active{{/eq}}">Volunteer Dashboard</a>
+            <a href="/jobs" class="sidebar-link">All Jobs</a>
+        {{/eq}}
+
+        {{#eq user.role 'student'}}
+            <a href="/dashboard/student" class="sidebar-link {{#eq activePage 'student'}}active{{/eq}}">My Applications</a>
+            <a href="/jobs" class="sidebar-link">Browse Jobs</a>
+            <a href="/companies" class="sidebar-link">Browse Companies</a>
+        {{/eq}}
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container" style="padding: 2rem 0;">
+    <h1>{{company.name}}</h1>
+    <p class="mb-4">{{company.description}}</p>
+    <a href="{{company.website}}" target="_blank">Visit Website</a>
+
+    <h2 class="mt-4">Open Jobs</h2>
+    <div class="grid">
+        {{#each jobs}}
+            {{> jobCard this}}
+        {{else}}
+            <p>No open jobs at this company.</p>
+        {{/each}}
+    </div>
+</div>

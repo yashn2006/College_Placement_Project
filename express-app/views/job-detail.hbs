@@ -1,0 +1,22 @@
+<div class="container" style="padding: 2rem 0;">
+    <h1>{{job.title}}</h1>
+    <p>Company: {{job.companies.name}}</p>
+    <p>{{job.description}}</p>
+    <p>CTC/Stipend: {{job.ctc_or_stipend}}</p>
+
+    {{#if (or (eq user.role 'student') (eq user.role 'volunteer'))}}
+        {{#if hasApplied}}
+            <button class="btn" disabled>Already Applied</button>
+        {{else}}
+            <form action="/job/{{job.id}}/apply" method="POST">
+                <button type="submit" class="btn btn-primary">Apply Now</button>
+            </form>
+        {{/if}}
+    {{/if}}
+
+    {{#if (or (eq user.role 'head') (and (eq user.role 'volunteer') (eq job.posted_by user.id)))}}
+        <form action="/job/{{job.id}}/delete" method="POST" onsubmit="return confirm('Delete this job?');">
+            <button type="submit" class="btn btn-red">Delete Job</button>
+        </form>
+    {{/if}}
+</div>

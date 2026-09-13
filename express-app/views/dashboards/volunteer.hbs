@@ -1,0 +1,73 @@
+<div class="dashboard-container">
+    {{> sidebar activePage='volunteer'}}
+    <div class="main-content">
+        <h1>Volunteer Dashboard</h1>
+        
+        <!-- Job Posting Form -->
+        <div class="card">
+            <h3>Post New Job</h3>
+            <form action="/job" method="POST">
+                <div class="form-group">
+                    <label>Company</label>
+                    <select name="company_id" class="form-control" required>
+                        {{#each companies}}
+                            <option value="{{this.id}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <select name="type" class="form-control" required>
+                        <option value="job">Job</option>
+                        <option value="internship">Internship</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>CTC/Stipend</label>
+                    <input type="text" name="ctc_or_stipend" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Eligibility</label>
+                    <input type="text" name="eligibility" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Deadline</label>
+                    <input type="date" name="deadline" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Post Job</button>
+            </form>
+        </div>
+
+        <h2>My Applications</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+            <thead>
+                <tr>
+                    <th>Job</th>
+                    <th>Company</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each myApplications}}
+                    <tr>
+                        <td>{{this.jobs.title}}</td>
+                        <td>{{this.jobs.companies.name}}</td>
+                        <td>{{{statusBadge this.status}}}</td>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <td colspan="3">You haven't applied to any jobs yet.</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

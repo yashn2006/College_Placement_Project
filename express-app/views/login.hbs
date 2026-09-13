@@ -1,0 +1,23 @@
+<div class="container mt-4" style="max-width: 500px;">
+    <div class="card">
+        <h2 style="margin-bottom: 1.5rem;">Login</h2>
+        {{#if error}}<p style="color: var(--red); margin-bottom: 1rem;">{{error}}</p>{{/if}}
+        <form action="/login" method="POST">
+        <div class="card" style="background: #f1f5f9; margin-bottom: 1rem; font-size: 0.875rem;">
+    <strong>Test Accounts:</strong><br>
+    Head: head@test.com / password123<br>
+    Volunteer: volunteer@test.com / password123<br>
+    Student: student1@test.com / password123
+</div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+        </form>
+    </div>
+</div>

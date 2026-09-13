@@ -1,0 +1,21 @@
+{
+  "name": "express-app",
+  "version": "1.0.0",
+  "description": "Gorgeously designed College Placement System with Express and Supabase",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.22.2",
+    "express-session": "^1.17.3",
+    "hbs": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

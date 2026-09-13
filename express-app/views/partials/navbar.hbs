@@ -1,0 +1,17 @@
+<nav class="navbar">
+    <div class="container">
+        <a href="/" class="brand" style="font-family: 'Sora'; font-size: 1.5rem; font-weight: 700; color: var(--primary);">PlacementHub</a>
+        <div class="nav-links">
+            <a href="/companies">Companies</a>
+            <a href="/jobs">Jobs</a>
+            {{#if user}}
+                <a href="/dashboard/{{user.role}}">Dashboard</a>
+                <form action="/logout" method="POST" style="display: inline;">
+                    <button type="submit" style="background: none; border: none; cursor: pointer; color: var(--text-muted); font-weight: 500; font-family: inherit; margin-left: 1.5rem;">Logout</button>
+                </form>
+            {{else}}
+                <a href="/login">Login</a>
+            {{/if}}
+        </div>
+    </div>
+</nav>

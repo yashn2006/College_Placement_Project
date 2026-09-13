@@ -1,0 +1,15 @@
+<div class="dashboard-container">
+    {{> sidebar activePage='student'}}
+    <div class="main-content">
+        <h1>My Applications</h1>
+        <div class="grid">
+            {{#each myApplications}}
+                <div class="card">
+                    <h3>{{this.jobs.title}}</h3>
+                    <p>{{this.jobs.companies.name}}</p>
+                    <p>Status: {{{statusBadge this.status}}}</p>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
